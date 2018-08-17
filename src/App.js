@@ -1,11 +1,25 @@
 import React, { Component } from 'react';
 import './App.css';
-// import Dashboard from './component/Dashboard/Dashboard';
-// import Wizard from './component/Wizard/Wizard';
 import Header from './component/Header/Header';
 import routes from './routes.js'
+import axios from 'axios'
 
 class App extends Component {
+  constructor(props){
+    super(props)
+
+    this.state = {
+      inventory: []
+    }
+  }
+
+  componentDidMount(){
+    axios.get('http://localhost:4000/api/inventory').then((res) => {
+      this.setState({inventory: res.data})
+      })
+    }
+
+
   render() {
     return (
       <div className="App">

@@ -1,0 +1,1 @@
+select * from House Where inventories_id = $1;
